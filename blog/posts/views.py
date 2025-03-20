@@ -3,7 +3,8 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    TemplateView
 )
 from .models import Post
 from django.urls import reverse_lazy
@@ -33,3 +34,6 @@ class PostCreateView(CreateView):
     template_name = "posts/new.html"
     model = Post
     fields = ["title", "subtitle", "body", "author", "status"]
+
+class AboutPageView(TemplateView):
+    template_name = "pages/about.html"  

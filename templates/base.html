@@ -15,7 +15,7 @@
 <body class="bg-dark text-light">
     <nav class="navbar navbar-expand-lg" style="background-color: #003366;">
         <div class="container-fluid">
-            <a class="navbar-brand text-warning" href="{% url 'home' %}">Big Blue's Blog</a> 
+            <a class="navbar-brand text-warning" href="{% url 'home' %}">Big Blue's Blog</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,6 @@
                         <input type="submit" class="btn btn-link nav-link text-light" value="Log Out">
                     </form>
                     {% else %}
-                    <a class="nav-link text-light" href="{% url 'signup' %}">Create an Account</a>
                     <a class="nav-link text-light" href="{% url 'login' %}">Log In</a>
                     {% endif %}
                 </div>
