@@ -13,9 +13,8 @@ from django.urls import reverse_lazy
 class PostUpdateView(UpdateView):
     template_name = "posts/edit.html"
     model = Post
-    fields = [
-        "title", "subtitle", "body", "author", "status"
-    ]
+    fields = ["title", "content", "author"]
+    success_url = reverse_lazy('list')
 
 class PostDeleteView(DeleteView):
     template_name = "posts/delete.html"
@@ -33,7 +32,8 @@ class PostDetailView(DetailView):
 class PostCreateView(CreateView):
     template_name = "posts/new.html"
     model = Post
-    fields = ["title", "subtitle", "body", "author", "status"]
+    fields = ["title", "content", "author"]
+    success_url = reverse_lazy('list')
 
 class AboutPageView(TemplateView):
-    template_name = "pages/about.html"  
+    template_name = "pages/about.html"

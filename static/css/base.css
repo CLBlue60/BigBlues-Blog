@@ -18,3 +18,13 @@ body {
 .nav-link:hover {
     color: #ffc107 !important; /* Gold on hover */
 }
+
+.btn-primary {
+    background-color: #003366; /* Dark blue */
+    border-color: #003366;
+}
+
+.btn-warning {
+    background-color: #ffc107; /* Gold */
+    border-color: #ffc107;
+}
