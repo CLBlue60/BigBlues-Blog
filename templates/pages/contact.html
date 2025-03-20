@@ -3,6 +3,41 @@
 {% block title %}Contact Us{% endblock %}
 
 {% block content %}
-<h1>Contact Us</h1>
-<p>You can reach us at contact@example.com.</p>
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center hero-section">
+        <h1 class="display-4">Contact Us</h1>
+        <p class="lead">We'd love to hear from you! Reach out to us anytime.</p>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="mt-5">
+        <h2 class="text-primary">Get in Touch</h2>
+        <p class="text-secondary">
+            You can reach us at <a href="mailto:contact@example.com" class="text-warning">contact@example.com</a>.
+        </p>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Email Us</h5>
+                        <p class="card-text">
+                            Send us an email, and we'll get back to you as soon as possible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-warning">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">Visit Us</h5>
+                        <p class="card-text">
+                            Our office is located at 123 Blue Street, Gold City.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

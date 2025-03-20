@@ -3,6 +3,43 @@
 {% block title %}About Us{% endblock %}
 
 {% block content %}
-<h1>About Us</h1>
-<p>This is the about page for our blog.</p>
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center hero-section">
+        <h1 class="display-4">Welcome to Big Blue's Blog!</h1>
+        <p class="lead">Discover more about us and our journey.</p>
+        <a href="#learn-more" class="btn btn-lg btn-gold">Learn More</a>
+    </div>
+
+    <!-- About Section -->
+    <div id="learn-more" class="mt-5">
+        <h2 class="text-primary">Who We Are</h2>
+        <p class="text-secondary">
+            Big Blue's Blog is your go-to source for insightful articles, tips, and stories. We are passionate about
+            sharing knowledge and connecting with our readers.
+        </p>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Our Mission</h5>
+                        <p class="card-text">
+                            To inspire and educate through engaging content, fostering a community of curious minds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-warning">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">Our Vision</h5>
+                        <p class="card-text">
+                            To become a trusted platform for learning and sharing ideas across the globe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

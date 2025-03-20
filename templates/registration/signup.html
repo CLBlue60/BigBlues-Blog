@@ -2,12 +2,24 @@
 
 {% block title %}Create an Account!{% endblock title %}
 
-
 {% block content %}
-<h1>Create an Account!</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn btn-success" value="Sign Up">
-</form>
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center hero-section">
+        <h1 class="display-4">Create an Account</h1>
+        <p class="lead">Join Big Blue's Blog and start your journey with us today!</p>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="mt-5">
+        <h2 class="text-primary">Sign Up</h2>
+        <form method="POST" class="row g-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="col-12">
+                <button type="submit" class="btn btn-gold">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock content %}

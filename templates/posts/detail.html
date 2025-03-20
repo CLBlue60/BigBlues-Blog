@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 
-
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block content %}
-<h1>{{ post.title }}</h1>
-<h3>{{ post.subtitle }}</h3>
-<small>Created On: {{ post.created_on }}</small>
-<p>{{ post.body }}</p>
-<a href="{% url 'edit' post.id %}" class="card-link">Edit</a>
-<a href="{% url 'delete' post.id %}" class="card-link">Delete</a>
-<a href="{% url 'list' %}" class="card-link">Back</a>
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center hero-section">
+        <h1 class="display-4">{{ post.title }}</h1>
+        <h3>{{ post.subtitle }}</h3>
+        <small>Created On: {{ post.created_on }}</small>
+    </div>
+
+    <!-- Post Content -->
+    <div class="mt-5">
+        <p class="text-secondary">{{ post.body }}</p>
+        <div class="d-flex justify-content-start gap-3">
+            <a href="{% url 'edit' post.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'delete' post.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'list' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>
 {% endblock content %}

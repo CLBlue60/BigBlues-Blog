@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block title %}Blog Home Page{% endblock title %}
 
 {% block content %}
-<h1>Welcome to Big Blue's Blog</h1>
-<p>This is the homepage of your app.</p>
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center hero-section">
+        <h1 class="display-4">Welcome to Big Blue's Blog</h1>
+        <p class="lead">Your one-stop destination for insightful articles and stories.</p>
+        <a href="{% url 'list' %}" class="btn btn-lg btn-gold">Explore Posts</a>
+    </div>
+
+    <!-- Introduction Section -->
+    <div class="mt-5">
+        <h2 class="text-primary">Why Big Blue's Blog?</h2>
+        <p class="text-secondary">
+            We are dedicated to providing high-quality content that inspires, educates, and entertains. Join our
+            community and start exploring today!
+        </p>
+    </div>
+</div>
 {% endblock content %}

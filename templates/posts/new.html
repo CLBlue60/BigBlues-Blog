@@ -1,13 +1,33 @@
 {% extends 'base.html' %}
 
-
-{% block title %}New Post{% endblock title %}
+{% block title %}Create a New Post{% endblock title %}
 
 {% block content %}
-<h1>New Post</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn btn-success" value="Create">
-</form>
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center hero-section">
+        <h1 class="display-4">Create a New Post</h1>
+        <p class="lead">Share your thoughts and ideas with the world.</p>
+    </div>
+
+    <!-- Form Section -->
+    <div class="mt-5">
+        <h2 class="text-primary">New Post</h2>
+        <form method="POST" class="row g-3 align-items-center">
+            {% csrf_token %}
+            <div class="col-12">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" id="title" class="form-control" placeholder="Post Title">
+            </div>
+            <div class="col-12">
+                <label for="content" class="form-label">Content</label>
+                <textarea name="content" id="content" class="form-control" rows="5"
+                    placeholder="Post Content"></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-gold">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock content %}

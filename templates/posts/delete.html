@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 
-
 {% block title %}Delete Post{% endblock title %}
 
 {% block content %}
-<h1>Delete Post Confirmation</h1>
-<p>Are you sure you'd like to delete the post: "{{ post.title }}" ?</p>
-<form method="POST">
-    {% csrf_token %}
-    <input type="submit" class="btn btn-danger" value="Confirm">
-</form>
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center hero-section">
+        <h1 class="display-4">Delete Post</h1>
+        <p class="lead">Are you sure you'd like to delete the post: "{{ post.title }}"?</p>
+    </div>
+
+    <!-- Delete Confirmation -->
+    <div class="mt-5">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Confirm">
+            <a href="{% url 'detail' post.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
 {% endblock content %}

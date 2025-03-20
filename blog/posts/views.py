@@ -24,6 +24,7 @@ class PostDeleteView(DeleteView):
 class PostListView(ListView):
     template_name = "posts/list.html"
     model = Post
+    context_object_name = "object_list"
 
 class PostDetailView(DetailView):
     template_name = "posts/detail.html"
@@ -34,6 +35,14 @@ class PostCreateView(CreateView):
     model = Post
     fields = ["title", "content", "author"]
     success_url = reverse_lazy('list')
+
+    def form_valid(self, form):
+        print("Form is valid. Saving post...")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("Form is invalid. Errors:", form.errors)
+        return super().form_invalid(form)
 
 class AboutPageView(TemplateView):
     template_name = "pages/about.html"

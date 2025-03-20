@@ -28,3 +28,32 @@ body {
     background-color: #ffc107; /* Gold */
     border-color: #ffc107;
 }
+
+/* Hero Section */
+.hero-section {
+  background-color: #003366; /* Dark blue */
+  color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+/* Gold Button */
+.btn-gold {
+  background-color: #FFD700; /* Gold */
+  color: #003366; /* Dark blue text */
+  border: none;
+}
+
+.btn-gold:hover {
+  background-color: #FFC107; /* Lighter gold on hover */
+  color: #002244; /* Slightly darker blue */
+}
+
+/* Card Styling */
+.card-title.text-warning {
+  color: #FFD700 !important; /* Gold for card titles */
+}
+
+.card.border-warning {
+  border-color: #FFD700 !important; /* Gold border */
+}
