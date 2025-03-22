@@ -8,6 +8,7 @@ from django.views.generic import (
 )
 
 from .models import Post, Status
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
@@ -118,3 +119,10 @@ class ArchivesListView(LoginRequiredMixin, ListView):
 
 class AboutPageView(TemplateView):
     template_name = "pages/about.html"
+
+
+def custom_403_view(request, exception=None):
+    return render(request, '403.html', status=403)
+
+def custom_404_view(request, exception=None):
+    return render(request, '404.html', status=404)

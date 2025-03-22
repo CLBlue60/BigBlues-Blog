@@ -34,6 +34,10 @@ body {
   color: white;
   padding: 2rem;
   border-radius: 0.5rem;
+
+  border: 5px solid gold;
+  border-radius: 10px; 
+  animation: glow 2s infinite;
 }
 
 .btn-gold {
@@ -59,10 +63,4 @@ body {
     0% { box-shadow: 0 0 10px gold; }
     50% { box-shadow: 0 0 20px gold; }
     100% { box-shadow: 0 0 10px gold; }
-}
-
-.jumbotron {
-    border: 5px solid gold;
-    border-radius: 10px; /* Optional: Rounded corners */
-    animation: glow 2s infinite;
 }

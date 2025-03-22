@@ -7,18 +7,18 @@
     <!-- Hero Section -->
     <div class="jumbotron text-center hero-section">
         <h1 class="display-4">{{ post.title }}</h1>
-        <h3>{{ post.subtitle }}</h3>
-        <small>Created On: {{ post.created_on }}</small>
+        <p class="lead">By {{ post.author.username }} on {{ post.created_on|date:"F j, Y" }}</p>
+        <hr class="my-4">
+        <p>{{ post.content }}</p>
     </div>
 
-    <!-- Post Content -->
-    <div class="mt-5">
-        <p class="text-secondary">{{ post.body }}</p>
-        <div class="d-flex justify-content-start gap-3">
-            <a href="{% url 'edit' post.id %}" class="btn btn-primary">Edit</a>
-            <a href="{% url 'delete' post.id %}" class="btn btn-danger">Delete</a>
-            <a href="{% url 'list' %}" class="btn btn-secondary">Back</a>
-        </div>
+    <!-- Action Buttons -->
+    <div class="mt-4">
+        {% if post.author == request.user %}
+        <a href="{% url 'edit' post.id %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'delete' post.id %}" class="btn btn-secondary">Delete</a>
+        {% endif %}
+        <a href="{% url 'list' %}" class="btn btn-warning">Back to Posts</a>
     </div>
 </div>
 {% endblock content %}
