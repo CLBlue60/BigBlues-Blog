@@ -3,11 +3,24 @@
 {% block title %}Blog Posts{% endblock %}
 
 {% block content %}
-<h1>Post List</h1>
-<a href="{% url 'new' %}" class="btn btn-primary mb-3">Create a New Post</a>
-<ul>
-    {% for post in object_list %}
-    <li><a href="{% url 'detail' post.pk %}">{{ post.title }}</a></li>
-    {% endfor %}
-</ul>
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center hero-section">
+        <h1 class="display-4">Blog Posts</h1>
+        <p class="lead">Explore the latest posts and share your thoughts.</p>
+    </div>
+
+    <!-- Post List Section -->
+    <div class="mt-5">
+        <h2 class="text-primary">Post List</h2>
+        <a href="{% url 'new' %}" class="btn btn-primary mb-3">Create a New Post</a>
+        <ul class="list-group">
+            {% for post in object_list %}
+            <li class="list-group-item">
+                <a href="{% url 'detail' post.pk %}" class="text-decoration-none">{{ post.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock content %}
