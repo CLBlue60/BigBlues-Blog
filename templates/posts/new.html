@@ -13,20 +13,10 @@
     <!-- Form Section -->
     <div class="mt-5">
         <h2 class="text-primary">New Post</h2>
-        <form method="POST" class="row g-3 align-items-center">
+        <form method="POST" action="{% url 'new' %}" class="row g-3 align-items-center">
             {% csrf_token %}
-            <div class="col-12">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" name="title" id="title" class="form-control" placeholder="Post Title">
-            </div>
-            <div class="col-12">
-                <label for="content" class="form-label">Content</label>
-                <textarea name="content" id="content" class="form-control" rows="5"
-                    placeholder="Post Content"></textarea>
-            </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-gold">Submit</button>
-            </div>
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="Create Post">
         </form>
     </div>
 </div>

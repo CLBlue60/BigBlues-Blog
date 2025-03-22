@@ -1,59 +1,68 @@
 body {
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
+    background-color: #f50b0b;
+    color: #fff;
 }
 
 .navbar {
-    background-color: #003366; /* Dark blue */
+    background-color: #003366;
 }
 
 .navbar-brand {
-    color: #ffc107 !important; /* Gold */
+    color: #ffc107 !important;
 }
 
 .nav-link {
-    color: #ffffff !important; /* White */
+    color: #ffffff !important;
 }
 
 .nav-link:hover {
-    color: #ffc107 !important; /* Gold on hover */
+    color: #ffc107 !important;
 }
 
 .btn-primary {
-    background-color: #003366; /* Dark blue */
+    background-color: #003366;
     border-color: #003366;
 }
 
 .btn-warning {
-    background-color: #ffc107; /* Gold */
+    background-color: #ffc107;
     border-color: #ffc107;
 }
 
-/* Hero Section */
 .hero-section {
-  background-color: #003366; /* Dark blue */
+  background-color: #003366;
   color: white;
   padding: 2rem;
   border-radius: 0.5rem;
 }
 
-/* Gold Button */
 .btn-gold {
-  background-color: #FFD700; /* Gold */
-  color: #003366; /* Dark blue text */
+  background-color: #FFD700;
+  color: #003366;
   border: none;
 }
 
 .btn-gold:hover {
-  background-color: #FFC107; /* Lighter gold on hover */
-  color: #002244; /* Slightly darker blue */
+  background-color: #FFC107;
+  color: #002244;
 }
 
-/* Card Styling */
 .card-title.text-warning {
-  color: #FFD700 !important; /* Gold for card titles */
+  color: #FFD700 !important;
 }
 
 .card.border-warning {
-  border-color: #FFD700 !important; /* Gold border */
+  border-color: #FFD700 !important;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 10px gold; }
+    50% { box-shadow: 0 0 20px gold; }
+    100% { box-shadow: 0 0 10px gold; }
+}
+
+.jumbotron {
+    border: 5px solid gold;
+    border-radius: 10px; /* Optional: Rounded corners */
+    animation: glow 2s infinite;
 }

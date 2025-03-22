@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Archives{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center hero-section">
+        <h1 class="display-4">Archives</h1>
+        <p class="lead">Browse through all your archived posts.</p>
+    </div>
+
+    <!-- Archives List -->
+    <div class="mt-5">
+        <ul class="list-group">
+            {% for post in archived_posts %}
+            <li class="list-group-item">
+                <a href="{% url 'detail' post.id %}">{{ post.title }}</a>
+                <span class="text-muted"> - Published on {{ post.published_at }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}

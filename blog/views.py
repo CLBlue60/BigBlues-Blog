@@ -1,69 +1,93 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from .models import Post
-from .forms import PostForm
+from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    TemplateView,
+)
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from .models import Post, Status
+from .forms import PostForm
 
 
-def post_list(request):
-    posts = Post.objects.all()
-    return render(request, 'blog/posts/post_list.html', {'posts': posts})
-
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/posts/post_detail.html', {'post': post})
-
-@login_required
-def post_create(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm()
-    return render(request, 'blog/posts/post_form.html', {'form': form})
-
-@login_required
-def post_update(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.user != post.author:
-        return redirect('post_list')
-    if request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm(instance=post)
-    return render(request, 'blog/posts/post_form.html', {'form': form})
-
-@login_required
-def post_delete(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.user != post.author:
-        return redirect('post_list')
-    post.delete()
-    return redirect('post_list')
+# Post List View
+class PostListView(ListView):
+    model = Post
+    template_name = "blog/posts/post_list.html"
+    context_object_name = "posts"
 
 
-def about(request):
-    return render(request, 'blog/pages/about.html')
+# Post Detail View
+class PostDetailView(DetailView):
+    model = Post
+    template_name = "blog/posts/post_detail.html"
+    context_object_name = "post"
 
-def contact(request):
-    return render(request, 'blog/pages/contact.html')
 
-def signup(request):
-    if request.method == 'POST':
+# Post Create View
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = "blog/posts/post_form.html"
+    success_url = reverse_lazy("list")
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+# Post Update View
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = "blog/posts/post_form.html"
+    success_url = reverse_lazy("list")
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
+
+
+# Post Delete View
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    model = Post
+    template_name = "blog/posts/post_confirm_delete.html"
+    success_url = reverse_lazy("list")
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
+
+
+# About Page View
+class AboutPageView(TemplateView):
+    template_name = "blog/pages/about.html"
+
+
+# Contact Page View
+class ContactPageView(TemplateView):
+    template_name = "blog/pages/contact.html"
+
+
+# Signup Page View
+class SignupPageView(TemplateView):
+    template_name = "registration/signup.html"
+
+    def post(self, request, *args, **kwargs):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
-            return redirect('login')
-    else:
+            username = form.cleaned_data.get("username")
+            messages.success(request, f"Account created for {username}!")
+            return HttpResponseRedirect(reverse_lazy("login"))
+        return self.render_to_response({"form": form})
+
+    def get(self, request, *args, **kwargs):
         form = UserCreationForm()
-    return render(request, 'blog/signup.html', {'form': form})
+        return self.render_to_response({"form": form})
