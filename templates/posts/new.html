@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-
 {% block title %}Create a New Post{% endblock title %}
 
 {% block content %}
@@ -17,8 +16,15 @@
         <h2 class="text-primary">New Post</h2>
         <form method="POST" action="{% url 'new' %}" class="row g-3 align-items-center">
             {% csrf_token %}
-            {{ form | crispy }}
-            <input type="submit" class="btn btn-primary" value="Create Post">
+            {{ form|crispy }}
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" name="save_draft" class="btn btn-secondary">
+                    Save as Draft
+                </button>
+                <button type="submit" name="publish" class="btn btn-primary">
+                    Publish Post
+                </button>
+            </div>
         </form>
     </div>
 </div>

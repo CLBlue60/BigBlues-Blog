@@ -5,22 +5,30 @@
 
 {% block content %}
 <div class="container mt-5">
-    <!-- Hero Section -->
     <div class="jumbotron text-center hero-section">
         <h1 class="display-4">Edit Post</h1>
-        <p class="lead">Make changes to your post below.</p>
+        <p class="lead">Make changes to your post</p>
     </div>
 
-    <!-- Edit Form -->
-    <div class="mt-5">
-        <form method="POST" class="row g-3">
-            {% csrf_token %}
-            {{ form | crispy }}
-            <div class="col-12">
-                <input type="submit" class="btn btn-gold" value="Save Edits">
-                <a href="{% url 'detail' post.id %}" class="btn btn-secondary">Cancel</a>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" name="save_draft" class="btn btn-secondary">
+                                Save Draft
+                            </button>
+                            <button type="submit" name="publish" class="btn btn-primary">
+                                Publish Post
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 {% endblock content %}

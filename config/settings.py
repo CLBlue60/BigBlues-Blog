@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # Product
     'blog.pages',
     'blog.posts',
+    'blog.users',
     # 3rd party
     'whitenoise.runserver_nostatic',
     'crispy_forms',

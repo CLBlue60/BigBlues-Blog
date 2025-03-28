@@ -14,10 +14,18 @@
     <div class="mt-5">
         <ul class="list-group">
             {% for draft in drafts %}
-            <li class="list-group-item">
-                <a href="{% url 'detail' draft.id %}">{{ draft.title }}</a>
-                <span class="text-muted"> - Last edited on {{ draft.updated_at }}</span>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'detail' pk=draft.pk %}" class="text-decoration-none">
+                    {{ draft.title }}
+                    <span class="text-muted ms-2">- Last edited {{ draft.updated_on|timesince }} ago</span>
+                </a>
+                <div>
+                    <a href="{% url 'edit' pk=draft.pk %}" class="btn btn-sm btn-outline-secondary me-2">Edit</a>
+                    <a href="{% url 'delete' pk=draft.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                </div>
             </li>
+            {% empty %}
+            <li class="list-group-item">You have no drafts.</li>
             {% endfor %}
         </ul>
     </div>
